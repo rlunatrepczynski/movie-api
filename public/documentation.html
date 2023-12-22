@@ -1,13 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renee's Movie Web Application</title>
 </head>
+
 <body>
-    <h1>Renee's Movie Web Application</h1>
-    <p>I will be building a movie web application where users can access information about different movies, the cast, and directors. I will create the movie web application where users will be able to sign up, updte their personal information, and create a list of their favorite movies. This will be done using Node.js.  </p>
-    
+    <h1>Movie API</h1>
+    <p>The movie web application is created from the server-side where users can access information about different
+        movies, the cast, genre, and directors. Users will be able to sign up, update their personal information, and
+        create a list of their favorite movies.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Business Logic</th>
+                <th>URL</th>
+                <th>HTTP Method</th>
+                <th>Request Body Data Format</th>
+                <th>Response Body Data Format</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>Allow new users to register</td>
+            <td>/users</td>
+            <td>POST</td>
+            <td>A JSON object is holding data about the user to add:
+                <code>
+                    {
+                        "name": "Steve",
+                        "favoriteMovies": [],
+                    }
+                </code>
+            </td>
+            <td>A JSON object holding data about the user that has been added, which included an ID:
+                <code>
+                    {
+                        "name": "Steve",
+                        "favoriteMovies": [],
+                        "id": "3aa59c28-91cd-4393-ad21-4949c5760b5e"
+                    }
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Allow users to update their user info</td>
+            <td>/users/:id</td>
+            <td>PUT</td>
+            <td>A JSON object holding data about the user that needs to be updated:
+                <code></code>
+                {
+                "name": "Steve",
+                "favoriteMovies": []
+                }
+                </code>
+            </td>
+            <td>A JSON object that holds data about the updated user information:
+                <code>
+                    {
+                        "id": 3,
+                        "name": "Steve",
+                        "favoriteMovies": []
+                        }
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Allow users to add a movie to their list of favorites</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>POST</td>
+            <td>None.</td>
+            <td>User receives a message indicating whether the user added the movie successfully.</td>
+        </tr>
+        <tr>
+            <td>Allow users to remove a movie from their list of favorites</td>
+            <td>/users/:id/:movieTitle</td>
+            <td>DELETE</td>
+            <td>None.</td>
+            <td>User receives a message indicating whether the user removed the movie successfully.</td>
+        </tr>
+        <tr>
+            <td>Allow existing users to deregister</td>
+            <td>/users/:id</td>
+            <td>DELETE</td>
+            <td>None</td>
+            <td>User receives a message indicating whether the user deregistered successfully.</td>
+        </tr>
+        <tr>
+            <td>Return a list of all movies to the user</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object that holds data about all movies</td>
+        </tr>
+        <tr>
+            <td>Return data about a single movie to the user</td>
+            <td>/movies/:title</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object that holds data about a single movie that contains the title, description, genre,
+                director, and ImageURL.
+                <code>
+                    {
+                        "Title": "Twilight",
+                        "Description": "Seventeen-year-old Bella Swan leaves Phoenix, Arizona and moves to Forks, a small town located on Washington state's Olympic Peninsula, to live with her father, Charlie, the town's police chief. Her mother, Renée, is remarried to Phil, a minor league baseball player whose career often keeps them on the road.",
+                        "Genre": {
+                            "Name": "Fantasy",
+                            "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. The genre is considered a form of speculative fiction alongside science fiction films and horror films, although the genres do overlap."
+                        },
+                        "Director": {
+                            "Name": "Catherine Hardwicke",
+                            "Bio": "Helen Catherine Hardwicke (born October 21, 1955) is an American film director, production designer, and screenwriter. Her directorial work includes Thirteen (2003), which she co-wrote with Nikki Reed, the film's co-star, Lords of Dogtown (2005), The Nativity Story (2006), Twilight (2008), Red Riding Hood (2011), Plush (2013), Miss You Already (2015), Miss Bala (2019), and Prisoner's Daughter (2022).",
+                            "Birth": "1955"
+                        },
+                        "ImageURL": "https://bloximages.chicago2.vip.townnews.com/wataugademocrat.com/content/tncms/assets/v3/editorial/a/98/a98f70a6-48c3-11ed-8a2d-c31ae8992b6a/63445ac7da4fc.image.jpg?resize=333%2C500",
+                        "Featured": false
+                    }  
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Return data about a genre(description) by name/title</td>
+            <td>/movies/genre/:genreName</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object that holds data about a single genre that contains the genre name and description.
+                <code>
+                    {
+                        "Name": "Comedy",
+                        "Description": "A comedy film is a category of film which emphasizes humor. These films are designed to amuse audiences and make them laugh."
+                    }
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <td>Return data about a director by name</td>
+            <td>/movies/director/:directorName</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object that holds data about a single director that contains the director name, bio, and birth
+                year.
+                <code>
+                    {
+                        "Name": "Ridley Scott",
+                        "Bio": "Sir Ridley Scott (born 30 November 1937) is an English filmmaker. He is best known for directing films in the science fiction, crime, and historical drama genres. His work is known for its atmospheric and highly concentrated visual style. Scott has received many accolades, including the BAFTA Fellowship for lifetime achievement in 2018, two Primetime Emmy Awards, and a Golden Globe Award. In 2003, he was knighted by Queen Elizabeth II.",
+                        "Birth": "1937"
+                    }
+                </code>
+            </td>
+        </tr>
+    </table>
 </body>
+
 </html>
