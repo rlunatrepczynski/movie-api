@@ -31,7 +31,7 @@ let users = [
 let movies = [
     {
         'Title': 'Happy Gilmore',
-        'Description': "Happy Gilmore is a short-tempered, unsuccessful ice hockey player whose only skills are fighting and a powerful slapshot he learned from his late father.",
+        'Description': "A rejected hockey player puts his skills to the golf course to save his grandmother's house.",
         'Genre': {
             'Name': 'Comedy',
             'Description': "A comedy film is a category of film which emphasizes humor. These films are designed to amuse audiences and make them laugh."
@@ -48,7 +48,7 @@ let movies = [
     },
     {
         'Title': 'Mean Girls',
-        'Description': "Sixteen-year-old homeschooled Cady Heron and her parents return to the United States after 12 years in Africa, settling in Evanston, Illinois. After an intimidating first day at North Shore High School, Cady befriends outsiders Janis Ian and Damian Leigh, who explain the school's various cliques and warn her to avoid the \"Plastics\", a clique consisting of wealthy but insecure Gretchen Wieners, sweet but dimwitted Karen Smith, and \"queen bee\" Regina George. When Cady is invited to sit with the Plastics at lunch, Janis persuades her to infiltrate them.",
+        'Description': "Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.",
         'Genre': {
             'Name': 'Comedy',
             'Description': "A comedy film is a category of film which emphasizes humor. These films are designed to amuse audiences and make them laugh."
@@ -63,7 +63,7 @@ let movies = [
     },
     {
         'Title': 'Twilight',
-        'Description': "Seventeen-year-old Bella Swan leaves Phoenix, Arizona and moves to Forks, a small town located on Washington state's Olympic Peninsula, to live with her father, Charlie, the town's police chief. Her mother, Renée, is remarried to Phil, a minor league baseball player whose career often keeps them on the road.",
+        'Description': "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire.",
         'Genre': {
             'Name': 'Fantasy',
             'Description': "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. The genre is considered a form of speculative fiction alongside science fiction films and horror films, although the genres do overlap."
@@ -78,7 +78,7 @@ let movies = [
     },
     {
         'Title': 'Jurassic Park',
-        'Description': "Industrialist John Hammond has created Jurassic Park, a theme park of cloned dinosaurs, on the tropical Isla Nublar. After a Velociraptor kills a dinosaur handler, the park's investors, represented by lawyer Donald Gennaro, demand a safety certification. Gennaro invites chaotician Ian Malcolm, and Hammond invites paleontologist Alan Grant and paleobotanist Ellie Sattler. Upon arrival, the group is shocked to see a live Brachiosaurus and a whole herd of other dinosaurs.",
+        'Description': "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
         'Genre': {
             'Name': 'Sci-Fi',
             'Description': "Science fiction (or sci-fi or SF) is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science, such as extraterrestrial lifeforms, spacecraft, robots, cyborgs, mutants, interstellar travel, time travel, or other technologies. Science fiction films have often been used to focus on political or social issues, and to explore philosophical issues like the human condition."
@@ -93,7 +93,7 @@ let movies = [
     },
     {
         'Title': 'Gladiator',
-        'Description': "In 180 AD, Hispano-Roman General Maximus Decimus Meridius intends to return home after he leads the Roman army to victory against Germanic tribes near Vindobona on the Limes Germanicus. Emperor Marcus Aurelius tells Maximus that his own son, Commodus, is unfit to rule and that he wishes Maximus to succeed him, as regent, to restore the Roman Republic. Marcus Aurelius informs Commodus; in response, Commodus murders his father.",
+        'Description': "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
         'Genre': {
             'Name': 'Action',
             'Description': "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats."
@@ -108,7 +108,7 @@ let movies = [
     },
     {
         'Title': 'Alien',
-        'Description': "In 2122, The commercial space tug Nostromo is returning to Earth with a seven-member crew in stasis: Captain Dallas, Executive Officer Kane, Warrant Officer Ripley, Navigator Lambert, Science Officer Ash, and engineers Parker and Brett. Detecting a transmission from a nearby moon, the ship's computer, Mother, awakens the crew. Per company policy requiring any potential distress signal be investigated, they land on the moon despite Parker's protests, sustaining damage from its atmosphere and rocky landscape. The engineers stay on board for repairs while Dallas, Kane, and Lambert investigate the terrain. They discover the signal originates from a derelict alien ship and enter it, losing contact with the Nostromo. Ripley deciphers part of the transmission, determining it as a warning, but cannot relay the information to those on the derelict ship.",
+        'Description': "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission.",
         'Genre': {
             'Name': 'Sci-Fi',
             'Description': "Science fiction is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science, such as extraterrestrial lifeforms, spacecraft, robots, cyborgs, mutants, interstellar travel, time travel, or other technologies."
@@ -123,7 +123,7 @@ let movies = [
     },
     {
         'Title': 'The Departed',
-        'Description': "In mid-1980s South Boston, Irish Mob boss Frank Costello introduces himself to a young Colin Sullivan. Twenty years later, Sullivan has been groomed as a spy inside the Massachusetts State Police (MSP) and joins the Special Investigation Unit (SIU), which is building a case against Costello. A police academy recruit, Billy Costigan Jr., is selected by Captain Queenan and Staff Sergeant Dignam to go undercover and infiltrate Costello's crew due to his family ties to organized crime, with his deceased uncle Jackie having been connected with Costello's outfit. SIU Captain George Ellerby informs Special Investigations that the identities of undercovers will be known only to Queenan and Dignam to prevent leaks.",
+        'Description': "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
         'Genre': {
             'Name': 'Thriller',
             'Description': "An atmosphere of menace and sudden violence, such as crime and murder, characterize thrillers. The tension usually arises when the character(s) is placed in a dangerous situation, or a trap from which escaping seems impossible."
@@ -139,7 +139,7 @@ let movies = [
     },
     {
         'Title': 'Harry Potter and the Sorcerer\'s Stone',
-        'Description': "The story follows Harry's first year at Hogwarts School of Witchcraft and Wizardry as he discovers that he is a famous wizard and begins his formal wizarding education.",
+        'Description': "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
         'Genre': {
             'Name': 'Fantasy',
             'Description': "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. The genre is considered a form of speculative fiction alongside science fiction films and horror films, although the genres do overlap."
@@ -154,7 +154,7 @@ let movies = [
     },
     {
         'Title': 'Spirited Away',
-        'Description': "Spirited Away tells the story of Chihiro Ogino (Hiiragi), a ten-year-old girl who, while moving to a new neighborhood, enters the world of kami (spirits of Japanese Shinto folklore). After her parents are turned into pigs by the witch Yubaba (Natsuki), Chihiro takes a job working in Yubaba's bathhouse to find a way to free herself and her parents and return to the human world.",
+        'Description': "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, a world where humans are changed into beasts.",
         'Genre': {
             'Name': 'Fantasy',
             'Desciption': "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. The genre is considered a form of speculative fiction alongside science fiction films and horror films, although the genres do overlap."
@@ -169,7 +169,7 @@ let movies = [
     },
     {
         'Title': 'Everything Everywhere All at Once',
-        'Description': "Evelyn Quan Wang is a middle-aged Chinese American immigrant who runs a laundromat with her husband, Waymond; two decades earlier, they eloped to the United States and had a daughter, Joy. In the present day, the laundromat is being audited by the Internal Revenue Service (IRS). Waymond is trying to serve Evelyn divorce papers in an attempt to get her attention so they can talk about their marriage. Evelyn's stern and demanding father (referred to as Gong Gong, Cantonese for \"grandfather\") is visiting for her Chinese New Year party, and Joy is dealing with depression, has a strained relationship with her mother, which also includes Evelyn's reluctance to accept Joy's lesbian relationship with her non-Chinese girlfriend Becky.",
+        'Description': "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.",
         'Genre': {
             'Name': 'Sci-Fi',
             'Description': "Science fiction is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science, such as extraterrestrial lifeforms, spacecraft, robots, cyborgs, mutants, interstellar travel, time travel, or other technologies."
