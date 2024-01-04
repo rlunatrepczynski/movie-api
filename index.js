@@ -88,7 +88,7 @@ let movies = [
         },
         'Director': {
             'Name': "Steven Spielberg",
-            'Bio': "Steven Allan Spielberg, born December 18, 1946) is an American film director, producer and screenwriter. A major figure of the New Hollywood era and pioneer of the modern blockbuster, he is the most commercially successful director in history.[1] He is the recipient of many accolades, including three Academy Awards, two BAFTA Awards, and four Directors Guild of America Awards, as well as the AFI Life Achievement Award in 1995, the Kennedy Center Honor in 2006, the Cecil B. DeMille Award in 2009 and the Presidential Medal of Freedom in 2015. Seven of his films have been inducted into the National Film Registry by the Library of Congress as \"culturally, historically or aesthetically significant\".",
+            'Bio': "Steven Allan Spielberg, born December 18, 1946) is an American film director, producer and screenwriter. A major figure of the New Hollywood era and pioneer of the modern blockbuster, he is the most commercially successful director in history. He is the recipient of many accolades, including three Academy Awards, two BAFTA Awards, and four Directors Guild of America Awards, as well as the AFI Life Achievement Award in 1995, the Kennedy Center Honor in 2006, the Cecil B. DeMille Award in 2009 and the Presidential Medal of Freedom in 2015. Seven of his films have been inducted into the National Film Registry by the Library of Congress as \"culturally, historically or aesthetically significant\".",
             'Birth': "1946",
             'Death': "Not Applicable (Alive)"
         },
@@ -177,19 +177,19 @@ let movies = [
         "Featured": false
     },
     {
-        'Title': 'Everything Everywhere All at Once',
-        'Description': "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.",
+        'Title': 'A Nightmare on Elm Street',
+        'Description': "Teenager Nancy Thompson must uncover the dark truth concealed by her parents after she and her friends become targets of the spirit of a serial killer with a bladed glove in their dreams, in which if they die, it kills them in real life.",
         'Genre': {
-            'Name': "Sci-Fi",
-            'Description': "Science fiction is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science, such as extraterrestrial lifeforms, spacecraft, robots, cyborgs, mutants, interstellar travel, time travel, or other technologies."
+            'Name': "Horro",
+            'Description': "Horror is a film genre that seeks to elicit fear or disgust in its audience for entertainment purposes."
         },
         'Director': {
-            'Name': "Daniel Kwan, Daniel Schinert",
-            'Bio': "Daniel Kwan (born February 10, 1988) and Daniel Scheinert (born June 7, 1987), known collectively as the Daniels, are an American filmmaker duo. They began their career as directors of music videos, including ones for \"Houdini\" (2012) by Foster the People and \"Turn Down for What\" (2013) by DJ Snake and Lil Jon, both of which earned them nominations at the Grammy Awards",
-            'Birth': "1988 for Kwan, 1987 for Scheinert",
-            'Death': "Not Applicable (Alive)"
+            'Name': "Wes Craven",
+            'Bio': "Wesley Earl Craven was an American film director, screenwriter, producer, actor, and editor. Craven has commonly been recognized as one of the greatest masters of the horror genre due to the cultural impact and influence of his work. Amongst his prolific filmography, Craven was best known for his pioneering work in the horror genre, particularly slasher films, where he mixed horror cliches with humor and satire.",
+            'Birth': "1939",
+            'Death': "2015"
         },
-        "ImageURL": "https://upload.wikimedia.org/wikipedia/en/1/1e/Everything_Everywhere_All_at_Once.jpg",
+        "ImageURL": "https://m.media-amazon.com/images/M/MV5BMTk0NDI3NTEwMV5BMl5BanBnXkFtZTgwNjgwNDgwNzE@._V1_.jpg",
         "Featured": false
     }
 ]
