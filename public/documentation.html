@@ -23,134 +23,234 @@
                 <th>Response Body Data Format</th>
             </tr>
         </thead>
-        <tr>
-            <td>Allow new users to register</td>
-            <td>/users</td>
-            <td>POST</td>
-            <td>A JSON object is holding data about the user to add:
-                <code>
-                    {
-                        "name": "Steve",
-                        "favoriteMovies": [],
-                    }
-                </code>
-            </td>
-            <td>A JSON object holding data about the user that has been added, which included an ID:
-                <code>
-                    {
-                        "name": "Steve",
-                        "favoriteMovies": [],
-                        "id": "3aa59c28-91cd-4393-ad21-4949c5760b5e"
-                    }
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <td>Allow users to update their user info</td>
-            <td>/users/:id</td>
-            <td>PUT</td>
-            <td>A JSON object holding data about the user that needs to be updated:
-                <code></code>
-                {
-                "name": "Steve",
-                "favoriteMovies": []
-                }
-                </code>
-            </td>
-            <td>A JSON object that holds data about the updated user information:
-                <code>
-                    {
-                        "id": 3,
-                        "name": "Steve",
-                        "favoriteMovies": []
+        <tbody>
+            <tr>
+                <td>Return a list of all movies to the user</td>
+                <td>/movies</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object that holds data about all movies</td>
+            </tr>
+            <tr>
+                <td>Return data about a single movie to the user</td>
+                <td>/movies/:title</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object that holds data about a single movie that contains the title, description, genre,
+                    director, and ImageURL.
+                    <code>
+                        {
+                            "Genre": {
+                                "Name": "Fantasy",
+                                "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. The genre is considered a form of speculative fiction alongside science fiction films and horror films, although the genres do overlap."
+                            },
+                            "Director": {
+                                "Name": "Catherine Hardwicke",
+                                "Bio": "Helen Catherine Hardwicke (born October 21, 1955) is an American film director, production designer, and screenwriter. Her directorial work includes Thirteen (2003), which she co-wrote with Nikki Reed, the film's co-star, Lords of Dogtown (2005), The Nativity Story (2006), Twilight (2008), Red Riding Hood (2011), Plush (2013), Miss You Already (2015), Miss Bala (2019), and Prisoner's Daughter (2022).",
+                                "Birth": "1955",
+                                "Death": "Not Applicable (Alive)"
+                            },
+                            "Actors": [],
+                            "_id": "659792bb0c0a7a51c4b79854",
+                            "Title": "Twilight",
+                            "Description": "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire.",
+                            "ImageURL": "https://bloximages.chicago2.vip.townnews.com/wataugademocrat.com/content/tncms/assets/v3/editorial/a/98/a98f70a6-48c3-11ed-8a2d-c31ae8992b6a/63445ac7da4fc.image.jpg?resize=333%2C500",
+                            "Featured": false
                         }
                 </code>
-            </td>
-        </tr>
-        <tr>
-            <td>Allow users to add a movie to their list of favorites</td>
-            <td>/users/:id/:movieTitle</td>
-            <td>POST</td>
-            <td>None.</td>
-            <td>User receives a message indicating whether the user added the movie successfully.</td>
-        </tr>
-        <tr>
-            <td>Allow users to remove a movie from their list of favorites</td>
-            <td>/users/:id/:movieTitle</td>
-            <td>DELETE</td>
-            <td>None.</td>
-            <td>User receives a message indicating whether the user removed the movie successfully.</td>
-        </tr>
-        <tr>
-            <td>Allow existing users to deregister</td>
-            <td>/users/:id</td>
-            <td>DELETE</td>
-            <td>None</td>
-            <td>User receives a message indicating whether the user deregistered successfully.</td>
-        </tr>
-        <tr>
-            <td>Return a list of all movies to the user</td>
-            <td>/movies</td>
+                </td>
+            </tr>
+            <tr>
+                <td>Return a list of All Users</td>
+                <td>/users</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object that holds data about all users.</td>
+            </tr>
+            <tr>
+                <td>Allow new users to register</td>
+                <td>/users</td>
+                <td>POST</td>
+                <td>A JSON object holding data about the user that will be added:
+                    <code>
+                        {
+                        ID: Integer,
+                        username: String,
+                        password: String,
+                        email: String,
+                        birthday: Date
+                    }
+                   </code>
+                </td>
+                <td>A JSON object holding data about that user that is added, which includes an ID. Example:
+                    <code>
+                        {
+                            "username": "mayatest",
+                            "password": "1234",
+                            "email": "mayatest@email.com",
+                            "birthday": "1992-12-12T07:00:00.000Z",
+                            "favoriteMovies": [],
+                            "_id": "659c8c685f9999a25dd40f2e",
+                            "__v": 0
+                        }
+                    </code>
+                </td>
+            </tr>
+            <tr>
+                <td>Get information about a movie by genre(description) by name/title</td>
+                <td>/movies/genre/:genreName</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object that holds data about a movie by genre that contains data about that movie.
+                    <code>
+                        {
+                            "Genre": {
+                                "Name": "Comedy",
+                                "Description": "A comedy film is a category of film which emphasizes humor. These films are designed to amuse audiences and make them laugh."
+                            },
+                            "Director": {
+                                "Name": "Dennis Dugan",
+                                "Bio": "Dennis Barton Dugan (born September 5, 1946) is an American film director, actor, and comedian. He is known for directing the films Problem Child, Brain Donors, Beverly Hills Ninja and National Security, and his partnership with comedic actor Adam Sandler, for whom he directed the films Happy Gilmore, Big Daddy, The Benchwarmers, I Now Pronounce You Chuck & Larry, You Don't Mess with the Zohan, Grown Ups, Just Go with It, Jack and Jill and Grown Ups 2. Dugan is a four-time Golden Raspberry Award for Worst Director nominee, winning once.",
+                                "Birth": "1946",
+                                "Death": "Not Applicable (Alive)"
+                            },
+                            "Actors": [],
+                            "_id": "65978851a427ac1d2b586a8f",
+                            "Title": "Happy Gilmore",
+                            "Description": "A wannabe hockey player puts his skills to the golf course to save his grandmother's house.",
+                            "ImageURL": "https://images.moviesanywhere.com/7308ccb67815dd9d2c50517d3ee3d91e/f9285756-768d-4fef-9c8c-69edb4d3c832.jpg",
+                            "Featured": false
+                        }
+                        </code>
+                </td>
+            </tr>
+            <tr>
+                <td>Get information about a movie by searching the director. </td>
+                <td>/movies/director/:directorName</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>A JSON object that gets information about a movie by searching the director and returns information
+                    about the movie. Example:
+                    <code>
+                        {
+                            "Genre": {
+                                "Name": "Action",
+                                "Description": "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats."
+                            },
+                            "Director": {
+                                "Name": "Ridley Scott",
+                                "Bio": "Ridley Scott is an filmmaker known best for sci-fi and the crime genre.",
+                                "Birth": "1937",
+                                "Death": "Not Applicable (Alive)"
+                            },
+                            "Actors": [],
+                            "_id": "659792bb0c0a7a51c4b79856",
+                            "Title": "Gladiator",
+                            "Description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+                            "ImageURL": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24674_p_v8_ae.jpg",
+                            "Featured": false
+                        }
+                    </code>
+                </td>
+            </tr>
+            <tr>
+                <td>Allow users to update user information</td>
+                <td>/users/:Username</td>
+                <td>PUT</td>
+                <td>A JSON object holding data about the user that needs to be updated, structured:
+                    <code>
+                        username: req.body.username,
+                        password: req.body.password,
+                        email: req.body.email,
+                        birthday: req.body.birthday,
+                    </code>
+                </td>
+                <td>A JSON object holding information about the updated user. Example:
+                    <code>
+                        {
+                            "_id": "65979b92d3573cf04d92e048",
+                            "username": "mayatest",
+                            "password": "mayatest1234",
+                            "email": "mayatest@email.com",
+                            "birthday": "1992-12-12T07:00:00.000Z",
+                            "favoriteMovies": [
+                                "659792bb0c0a7a51c4b7985b"
+                            ]
+                        }
+                    </code>
+                </td>
+            </tr>
+            <tr>
+
+            </tr>
+            <td>Return data about a single user by username</td>
+            <td>/users/:username</td>
             <td>GET</td>
             <td>None</td>
-            <td>A JSON object that holds data about all movies</td>
-        </tr>
-        <tr>
-            <td>Return data about a single movie to the user</td>
-            <td>/movies/:title</td>
-            <td>GET</td>
-            <td>None</td>
-            <td>A JSON object that holds data about a single movie that contains the title, description, genre,
-                director, and ImageURL.
+            <td>A JSON object holding data about a single user, containing the username, password, email, birthday,
+                favorite movies, and ID. Example:
                 <code>
                     {
-                        "Title": "Twilight",
-                        "Description": "Seventeen-year-old Bella Swan leaves Phoenix, Arizona and moves to Forks, a small town located on Washington state's Olympic Peninsula, to live with her father, Charlie, the town's police chief. Her mother, Renée, is remarried to Phil, a minor league baseball player whose career often keeps them on the road.",
-                        "Genre": {
-                            "Name": "Fantasy",
-                            "Description": "Fantasy films are films that belong to the fantasy genre with fantastic themes, usually magic, supernatural events, mythology, folklore, or exotic fantasy worlds. The genre is considered a form of speculative fiction alongside science fiction films and horror films, although the genres do overlap."
-                        },
-                        "Director": {
-                            "Name": "Catherine Hardwicke",
-                            "Bio": "Helen Catherine Hardwicke (born October 21, 1955) is an American film director, production designer, and screenwriter. Her directorial work includes Thirteen (2003), which she co-wrote with Nikki Reed, the film's co-star, Lords of Dogtown (2005), The Nativity Story (2006), Twilight (2008), Red Riding Hood (2011), Plush (2013), Miss You Already (2015), Miss Bala (2019), and Prisoner's Daughter (2022).",
-                            "Birth": "1955"
-                        },
-                        "ImageURL": "https://bloximages.chicago2.vip.townnews.com/wataugademocrat.com/content/tncms/assets/v3/editorial/a/98/a98f70a6-48c3-11ed-8a2d-c31ae8992b6a/63445ac7da4fc.image.jpg?resize=333%2C500",
-                        "Featured": false
-                    }  
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <td>Return data about a genre(description) by name/title</td>
-            <td>/movies/genre/:genreName</td>
-            <td>GET</td>
-            <td>None</td>
-            <td>A JSON object that holds data about a single genre that contains the genre name and description.
-                <code>
-                    {
-                        "Name": "Comedy",
-                        "Description": "A comedy film is a category of film which emphasizes humor. These films are designed to amuse audiences and make them laugh."
+                        "_id": "659caaf828ce2420c635733a",
+                        "username": "jimmy12",
+                        "password": "jimmy12",
+                        "email": "jimmy12@email.com",
+                        "birthday": "1994-04-24T07:00:00.000Z",
+                        "favoriteMovies": [],
+                        "__v": 0
                     }
                 </code>
             </td>
-        </tr>
-        <tr>
-            <td>Return data about a director by name</td>
-            <td>/movies/director/:directorName</td>
-            <td>GET</td>
-            <td>None</td>
-            <td>A JSON object that holds data about a single director that contains the director name, bio, and birth
-                year.
-                <code>
-                    {
-                        "Name": "Ridley Scott",
-                        "Bio": "Sir Ridley Scott (born 30 November 1937) is an English filmmaker. He is best known for directing films in the science fiction, crime, and historical drama genres. His work is known for its atmospheric and highly concentrated visual style. Scott has received many accolades, including the BAFTA Fellowship for lifetime achievement in 2018, two Primetime Emmy Awards, and a Golden Globe Award. In 2003, he was knighted by Queen Elizabeth II.",
-                        "Birth": "1937"
-                    }
-                </code>
-            </td>
-        </tr>
+            <tr>
+                <td>Allow users to add a movie to favorite movies</td>
+                <td>/users/:username/movies/:MovieID</td>
+                <td>POST</td>
+                <td>None</td>
+                <td>A JSON object holding data about the updated user information after movie has been added to
+                    favoriteMovies. Example:
+                    <code>
+                        {
+                            "_id": "659caaf828ce2420c635733a",
+                            "username": "jimmy12",
+                            "password": "jimmy12",
+                            "email": "jimmy12@email.com",
+                            "birthday": "1994-04-24T07:00:00.000Z",
+                            "favoriteMovies": [
+                                "659792bb0c0a7a51c4b7985b"
+                            ],
+                            "__v": 0
+                        }
+                    </code>
+                </td>
+            </tr>
+            <tr>
+                <td>Allow users to remove a movie from their list of favorites</td>
+                <td>/users/:username/movies/:MovieID</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>A JSON object holding data about the updated user information for removing a movie from favorite
+                    movies. Example:
+                    <code>
+                        {
+                            "_id": "659caaf828ce2420c635733a",
+                            "username": "jimmy12",
+                            "password": "jimmy12",
+                            "email": "jimmy12@email.com",
+                            "birthday": "1994-04-24T07:00:00.000Z",
+                            "favoriteMovies": [],
+                            "__v": 0
+                        }   
+                    </code>
+                </td>
+            </tr>
+            <tr>
+                <td>Allow existing users to deregister</td>
+                <td>/users/:username</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>User receives a message indicating whether the user deregistered successfully.</td>
+            </tr>
+        </tbody>
     </table>
 </body>
 
