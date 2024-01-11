@@ -1,0 +1,69 @@
+[
+    {
+        "_id": {
+            "$oid": "65979b92d3573cf04d92e048"
+        },
+        "username": "jimmy12",
+        "password": "dkfjslsd",
+        "email": "jimmy12@email.com",
+        "birthday": {
+            "$date": "1988-02-16T00:00:00Z"
+        },
+        "favoriteMovies": [
+            {
+                "$oid": "659792bb0c0a7a51c4b7985b"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "65979d23d3573cf04d92e049"
+        },
+        "username": "phillyt1",
+        "password": "dfaddfds",
+        "email": "phillyt1@email.com",
+        "birthday": {
+            "$date": "1984-05-24T00:00:00Z"
+        },
+        "favoriteMovies": [
+            {
+                "$oid": "65978851a427ac1d2b586a8f"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "65979e86d3573cf04d92e04a"
+        },
+        "username": "beth3",
+        "password": "djkajdfk",
+        "email": "beth3@email.com",
+        "birthday": {
+            "$date": "1972-08-27T00:00:00Z"
+        },
+        "favoriteMovies": [
+            {
+                "$oid": "659792bb0c0a7a51c4b79854"
+            }
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6597a263d3573cf04d92e04c"
+        },
+        "username": "olivia7",
+        "password": "fdjkjau",
+        "email": "olivia7@email.com",
+        "birthday": {
+            "$date": "1990-04-17T00:00:00Z"
+        },
+        "favoriteMovies": [
+            {
+                "$oid": "659792bb0c0a7a51c4b79857"
+            },
+            {
+                "$oid": "659792bb0c0a7a51c4b79858"
+            }
+        ]
+    }
+]
