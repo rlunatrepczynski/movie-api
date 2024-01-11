@@ -14,8 +14,14 @@ mongoose.connect("mongodb://localhost:27017/cfDB", {
     useUnifiedTopology: true,
 });
 
+let auth = require('./auth')(app);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+const passport = require('passport');
+require('./passport');
 
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
@@ -27,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 //Return a list of all movies to the user (READ)
-app.get("/movies", (req, res) => {
+app.get("/movies", passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
         .then((movies) => {
             res.status(201).json(movies);
@@ -217,4 +223,5 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
     console.log('The movie app has loaded and is listening on port 8080');
 });
+
 
