@@ -72,7 +72,7 @@ app.get("/movies/:Title", passport.authenticate('jwt', { session: false }), (req
 app.get("/movies/genres/:genreName", passport.authenticate('jwt', { session: false }), async (req, res) => {
     await Movies.findOne({ "Genre.Name": req.params.genreName })
         .then((movies) => {
-            res.json(movies);
+            res.json(movies.Genre);
         })
         .catch((err) => {
             console.error(err);
@@ -84,7 +84,7 @@ app.get("/movies/genres/:genreName", passport.authenticate('jwt', { session: fal
 app.get("/movies/director/:directorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
     await Movies.findOne({ "Director.Name": req.params.directorName })
         .then((movies) => {
-            res.json(movies);
+            res.json(movies.Director);
         })
         .catch((err) => {
             console.error(err);
