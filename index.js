@@ -16,9 +16,9 @@ const { check, validationResult } = require('express-validator');
     useUnifiedTopology: true
 }); */
 
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useUnifiedTopology: true });
 
-let allowedOrigins = ['http//localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
@@ -35,7 +35,6 @@ let auth = require('./auth')(app);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
 const passport = require('passport');
 const { measureMemory } = require("vm");
 require('./passport');
@@ -109,53 +108,41 @@ app.get("/movies/director/:directorName", passport.authenticate('jwt', { session
 });
 
 //Allow new users to register (CREATE)
-app.post('/users',
-    // Validation logic here for request
-    //you can either use a chain of methods like .not().isEmpty()
-    //which means "opposite of isEmpty" in plain english "is not empty"
-    //or use .isLength({min: 5}) which means
-    //minimum value of 5 characters are only allowed
-    [
-        check('Username', 'Username is required').isLength({ min: 5 }),
-        check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-        check('Password', 'Password is required').not().isEmpty(),
-        check('Email', 'Email does not appear to be valid').isEmail()
-    ], async (req, res) => {
-
-        // check the validation object for errors
-        let errors = validationResult(req);
-
-        if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() });
-        }
-
-        let hashedPassword = Users.hashedPassword(req.body.password);
-        await Users.findOne({ username: req.body.username })//Search to see if a user with the requested username already exits
-            .then((user) => {
-                if (user) {
-                    //If the user is found, send response that it already exists
-                    return res.status(400).send(req.body.username + "already exists");
-                } else {
-                    Users.create({
+app.post('/users', [
+    check('Username', 'Username is required').isLength({ min: 5 }),
+    check('Username', 'Username contains non alphanumeric characters').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email is not valid').isEmail()
+], async (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    await Users.findOne({ username: req.body.username })
+        .then((user) => {
+            if (user) {
+                return res.status(400).send(req.body.username + 'already exists');
+            } else {
+                Users
+                    .create({
                         username: req.body.username,
-                        password: req.body.password,
+                        password: hashedPassword,
                         email: req.body.email,
-                        birthday: req.body.birthday,
+                        birthday: req.body.birthday
                     })
-                        .then((user) => {
-                            res.status(201).json(user);
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                            res.status(500).send("Error: " + error);
-                        });
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-                res.status(500).send("Error: " + error);
-            });
-    });
+                    .then((user) => { res.status(201).json(user) })
+                    .catch((error) => {
+                        console.error(error);
+                        res.status(500).send('Error: ' + error);
+                    })
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
+});
 
 //Update a user's info, by username (UPDATE)
 app.put("/users/:Username", passport.authenticate('jwt', { session: false }), [
@@ -174,7 +161,7 @@ app.put("/users/:Username", passport.authenticate('jwt', { session: false }), [
         {
             $set: {
                 username: req.body.username,
-                password: req.body.password,
+                password: hashedPassword,
                 email: req.body.email,
                 birthday: req.body.birthday,
             },
