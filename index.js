@@ -16,7 +16,7 @@ const { check, validationResult } = require('express-validator');
     useUnifiedTopology: true
 }); */
 
-mongoose.connect(process.env.CONNECTION_URI, { useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 app.use(cors({
