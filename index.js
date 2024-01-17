@@ -150,32 +150,36 @@ app.put("/users/:Username", passport.authenticate('jwt', { session: false }), [
     check('username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
     check('password', 'Password is required').not().isEmpty(),
     check('email', 'Email does not appear to be valid').isEmail()
-], (req, res) => {
-    let errors = validationResult(req);
+], async (req, res) => {
+    try {
+        let errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
-    }
-    Users.findOneAndUpdate(
-        { Username: req.params.username },
-        {
-            $set: {
-                username: req.body.username,
-                password: hashedPassword,
-                email: req.body.email,
-                birthday: req.body.birthday,
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
+        }
+
+        let hashedPassword = Users.hashPassword(req.body.password); // Move hashedPassword declaration here
+
+        const updatedUser = await Users.findOneAndUpdate(
+            { Username: req.params.username },
+            {
+                $set: {
+                    username: req.body.username,
+                    password: hashedPassword,
+                    email: req.body.email,
+                    birthday: req.body.birthday,
+                },
             },
-        },
-        { new: true }
-    ) // This line makes sure that the updated document is returned
-        .then((updatedUser) => {
-            res.json(updatedUser);
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send("Error: " + err);
-        });
+            { new: true }
+        );
+
+        res.json(updatedUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+    }
 });
+
 
 //Allow users to remove a movie from their list of favorites (DELETE)
 app.delete("/users/:username/movies/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
