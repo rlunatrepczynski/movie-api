@@ -109,10 +109,10 @@ app.get("/movies/director/:directorName", passport.authenticate('jwt', { session
 
 //Allow new users to register (CREATE)
 app.post('/users', [
-    check('Username', 'Username is required').isLength({ min: 5 }),
-    check('Username', 'Username contains non alphanumeric characters').isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email is not valid').isEmail()
+    check('username', 'Username is required').isLength({ min: 5 }),
+    check('username', 'Username contains non alphanumeric characters').isAlphanumeric(),
+    check('password', 'Password is required').not().isEmpty(),
+    check('email', 'Email is not valid').isEmail()
 ], async (req, res) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -146,10 +146,10 @@ app.post('/users', [
 
 //Update a user's info, by username (UPDATE)
 app.put("/users/:Username", passport.authenticate('jwt', { session: false }), [
-    check('Username', 'Username is required').isLength({ min: 5 }),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail()
+    check('username', 'Username is required').isLength({ min: 5 }),
+    check('username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('password', 'Password is required').not().isEmpty(),
+    check('email', 'Email does not appear to be valid').isEmail()
 ], (req, res) => {
     let errors = validationResult(req);
 
