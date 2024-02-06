@@ -18,7 +18,7 @@ const { check, validationResult } = require('express-validator');
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://renee-myflix-api-2507fb668e0f.herokuapp.com/'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
